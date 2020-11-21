@@ -19,7 +19,7 @@ record={
         },
         "newDescription":"Take all the North Indian states",
         "newStartDate":"10-11-2020",
-        "newStartDAte":"15-11-2020"
+        "newEndDAte":"15-11-2020"
     }
 
 def projectUpdater():
