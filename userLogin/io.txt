@@ -1,0 +1,18 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+    "uname":"user001",
+    "password":"xyz123"
+}
+
+#outpu1
+
+{"message":"sahil, Welcome to Folk Developers","status":"True"}
+
+#more io tests here
