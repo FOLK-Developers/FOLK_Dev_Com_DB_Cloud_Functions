@@ -1,0 +1,22 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+"name" : "chetan",
+"email" : "chetanfolk@gmail.com"
+}
+
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "Success"
+}
+
