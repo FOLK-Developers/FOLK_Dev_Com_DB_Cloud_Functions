@@ -1,0 +1,20 @@
+#input - 
+Response body : Json Body or json request
+
+{
+    "uname":"user123",
+    "password":"pass123"
+}
+
+#output1 - 
+# If registration successful
+{
+    "status": "True",
+    "message": "New user registered successfully"
+}
+
+# If user already exists
+{
+    "status": "False",
+    "message":"Username already exists"
+}
