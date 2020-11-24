@@ -1,0 +1,23 @@
+  
+#input-
+Response body : Json Body or json request
+
+{
+    "username":"username",
+    'email': 'email',
+    'gender': 'gender',
+    'mobile':'phone_no',
+    'birth_date':'birth_date',
+    'birth_year':'birth_year',
+    'birth_month':'birth_month',
+    'location_city':'city',
+    'location_state':'state',
+    'location_country':'country',
+    'location_pincode':'pincode',
+    'location_current':'current'
+}
+
+#output-
+{
+  "status": status
+}
