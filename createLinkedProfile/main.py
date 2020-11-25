@@ -1,0 +1,88 @@
+from datetime import time
+
+import firebase_admin
+import requests
+from firebase_admin import credentials
+from firebase_admin import firestore
+import flask
+from flask import request, jsonify
+
+# initialize firebase application
+firebase_admin.initialize_app()
+
+# connect to db
+db = firestore.client()
+
+# global variables
+recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
+           'url': "email@gmail.com",
+           'domain': "google",
+           'type': "communication",
+           'user_name': "email",
+           'signin_status': True,
+           'performer': "Admin"}
+
+verification_status = "Pending"
+verified_by = "None"
+verified_timestamp = 0
+def hello_world(request):
+    recData = flask.request.json
+    # print("Received Data :", recdata)
+
+    doc_id = recData['doc_id']
+    url = recData['url']
+    domain = recData['domain']
+    type = recData['type']
+    user_name = recData['user_name']
+    signin_status = recData['signin_status']
+
+    if signin_status == True:
+        verification_status = "Verified"
+        verified_by = "domain"
+        verified_timestamp = int(time.time())
+
+    created_timestamp = int(time.time())
+
+    data = {
+        'doc_id': "ae4sChLW7MmmdbH56vOi",
+           'url': "email@gmail.com",
+           'domain': "google",
+           'type': "communication",
+           'user_name': "email",
+           'update_timestamp': created_timestamp,
+            'verification_status': verification_status,
+            'verified_by': verified_by,
+        'verified_timestamp': verified_timestamp
+            }
+
+
+    # your logic or code here..
+    docref = db.collection('Profile').document(doc_id).collection('LinkedProfile').document()
+    docref.set(data)
+
+    data = {
+        'visibility_to_user': "Visible",
+        'activity_type': "Data update",
+        'category': "LinkedProfile",
+        'sub_category': "createLinkedProfile",
+        'details': domain,
+        'sub_details': url,
+        'performer': recData['performer'],
+        'edate': int(time.time()),
+        'doc_id': doc_id,
+        'readable_date': firestore.SERVER_TIMESTAMP,
+        'access_permission': ['admin']
+    }
+
+    docref = db.collection('Profile').document(doc_id).collection('Activities').document()
+    docref.set(data)
+
+    # resp = requests.post('https://us-central1-folk-dev-com-db.cloudfunctions.net/addActivity',
+    #                      json=data)
+
+    response = {
+        "status": "True",
+        "message": "Created Linked Profile & Activities.."
+    }
+
+    return jsonify(response)

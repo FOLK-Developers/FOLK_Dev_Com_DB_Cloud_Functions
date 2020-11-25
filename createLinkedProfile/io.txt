@@ -1,0 +1,27 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{'doc_id': "ae4sChLW7MmmdbH56vOi",
+           'url': "email@gmail.com",
+           'domain': "google",
+           'type': "communication",
+           'user_name': "email",
+           'signin_status': True,
+           'performer': "Admin"}
+
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "Created Linked Profile & Activities.."
+}
+
+
+#more io tests here
