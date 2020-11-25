@@ -1,0 +1,24 @@
+#input-
+Response body : Json Body or json request
+
+{
+    "username":"username",
+    'degree_type' = 'degree_type'
+    'highest_degree' = 'highest_degree'
+    'year_of_completion' = 'year_of_completion'
+    'institute' = 'institute'
+    'university' = 'university'
+    'location' = 'location'
+    'marks_scored' = 'marks_scored'
+    'designation' = 'designation'
+    'status' = 'status'
+    'company' = 'company'
+    'company_location' = 'company_location'
+    'start_date' = 'start_date'
+    'end_date' = 'end_date'
+}
+
+#output-
+{
+  "status": status
+}

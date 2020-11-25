@@ -58,7 +58,7 @@ def hello_world(request):
 
     # Add a new doc in collection 'ProfileInfo'
     try:
-        db.collection(u'Profile').add(data)
+        db.collection(u'ProfileInfo').add(data)
         status = "True"
     except:
         status = "False"
