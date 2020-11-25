@@ -1,0 +1,29 @@
+#input-
+Response body : Json Body or json request
+
+{
+    'username':'username',
+    'url' = 'url'
+    'domain' = 'domain'
+    'profile_type' = 'type'
+    'user_name' = 'user_name'
+    'skill' = 'skill'
+    'evaluation' = 'evaluation'
+    'evaluated_by' = 'evaluated_by'
+    'project_id' = 'project_id'
+    'role' = 'role'
+    'status' = 'status'
+    'major_contribution' = 'major_contribution'
+    'hours' = 'hours'
+    'start_date' = 'start_date'
+    'end_date' = 'end_date'
+    'reporting_manager' = 'reporting_manager'
+    'hr_manager' = 'hr_manager'
+    'accesses' = 'accesses'
+    'rewards' = 'rewards'
+}
+
+#output-
+{
+  "status": status
+}
