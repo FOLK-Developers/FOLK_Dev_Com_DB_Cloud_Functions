@@ -20,7 +20,8 @@ recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
            'type': "communication",
            'user_name': "email",
            'signin_status': True,
-           'performer': "Admin"}
+           'performer': "Admin",
+           'uid': 'xyz'}
 
 verification_status = "Pending"
 verified_by = "None"
@@ -35,6 +36,7 @@ def hello_world(request):
     type = recData['type']
     user_name = recData['user_name']
     signin_status = recData['signin_status']
+    uid = recData['uid']
 
     if signin_status == True:
         verification_status = "Verified"
@@ -52,12 +54,13 @@ def hello_world(request):
            'update_timestamp': created_timestamp,
             'verification_status': verification_status,
             'verified_by': verified_by,
-        'verified_timestamp': verified_timestamp
+        'verified_timestamp': verified_timestamp,
+        'uid': uid
             }
 
 
     # your logic or code here..
-    docref = db.collection('Profile').document(doc_id).collection('LinkedProfile').document()
+    docref = db.collection('Profile').document(doc_id).collection('LinkedProfiles').document()
     docref.set(data)
 
     data = {
@@ -82,7 +85,7 @@ def hello_world(request):
 
     response = {
         "status": "True",
-        "message": "Created Linked Profile & Activities.."
+        "message": "Created Linked Profiles & Activities.."
     }
 
     return jsonify(response)
