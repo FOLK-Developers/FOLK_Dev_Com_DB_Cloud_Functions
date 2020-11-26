@@ -3,6 +3,10 @@
 
 # Run : ./makeDir.sh newDirectory
 
-cp -r cloud-function-template/ $1 
+
+cf_list = ['createLinkedProfile','']
+
+#loop over the list and run this command for every item in the list
+cp -r cloud-function-template/
 
 
