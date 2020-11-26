@@ -40,28 +40,33 @@ def hello_world(request):
     doc = db.collection(u'ProfileInfo').where("userid","==",doc_id)
 
 
-    data={
-       "visibility_to_user" :visibility_to_user,
-        "category":category,
-        "details":details,
-        "edate":edate,
-        "performer":performer,
-        "sub_details":sub_details,
-        "doc_id":doc_id,
-        "sub_category":sub_category,
-        "readable_date":readable_date,
-        "Activity_type":Activity_type,
-        "Access_permission":Access_permission
 
-    }
-    status=False
 
    #Adding data to db
     try:
-        doc.set(data)
-	status=True
+        doc.set(
+            {
+                "Activities": {
+                    "visibility_to_user": visibility_to_user,
+                    "category": category,
+                    "details": details,
+                    "edate": edate,
+                    "performer": performer,
+                    "sub_details": sub_details,
+                    "doc_id": doc_id,
+                    "sub_category": sub_category,
+                    "readable_date": readable_date,
+                    "Activity_type": Activity_type,
+                    "Access_permission": Access_permission
+
+                }
+            }
+        )
+        status = "True"
+
     except:
-        status=False
+        status = "False"
+
     response = {
         "status": status,
         "message": "Activity added successfully "
