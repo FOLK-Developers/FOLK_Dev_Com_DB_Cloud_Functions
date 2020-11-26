@@ -37,7 +37,7 @@ def hello_world(request):
         doc_id = doc.id #userid is same as docid in ProfileInfo collection
 
     # getting the document associated with userid of current user
-    doc = db.collection(u'ProfileInfo').where("userid","==",userid)
+    doc = db.collection(u'ProfileInfo').where("userid","==",doc_id)
 
 
     data={
