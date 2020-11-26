@@ -6,18 +6,22 @@
 
 #2. Response body : Json Body or json request
 
-{
-"name" : "chetan",
-"email" : "chetanfolk@gmail.com"
-}
 
-
+     "LoginInfo": {
+            "username": username,
+            "account_status": account_status,
+            "avatar": avatar,
+            "application": application,
+            "last_login": last_login,
+            "first_login": first_login,
+            "login_type": login_type,
+        }
 
 #outpu1
 
 {
-        "status": "True",
-        "message": "Success"
+        "status": status,
+        "message": "Login Info added Successfully! "
 }
 
 
