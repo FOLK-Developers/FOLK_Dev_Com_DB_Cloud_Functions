@@ -14,14 +14,16 @@ firebase_admin.initialize_app()
 db = firestore.client()
 
 # global variables
-recData = {'source': "Social Media",
-           'url': "email@gmail.com",
-           'domain': "google",
-           'secondary_source': "Facebook",
-           'name': "Unknown",
-           'signin_status': True,
-           'performer': "Admin",
-           'uid': "xyz"}
+recData = {
+   "primary_source": "Social Media",
+    "secondary_source": "Facebook",
+   "url": "test@gmail.com",
+   "domain": "google",
+   "name": "Unknown",
+   "signin_status": True,
+   "performer": "Admin",
+   "uid": "xyz"
+}
 
 
 # to get profile flags
@@ -60,13 +62,10 @@ def hello_world(request):
     signin_status = recData['signin_status']
     performer = recData['performer']
     uid = recData['uid']
-    # user_name = recData['name']
 
     # your logic or code here..
 
-    docref = db.collection_group(u'LinkedProfiles') \
-        .where(u'domain', u'==', domain) \
-        .where('url', '==', url)
+    docref = db.collection_group(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
     docs = docref.stream()
 
     ldoc_id = ""
@@ -88,7 +87,7 @@ def hello_world(request):
             'secondary_source': secondary_source,
             'primary_source': primary_source,
             'name': name,
-            'timestamps.preprimary_info': int(time.time()),
+            'timestamps.preprimary_infostatus': int(time.time()),
             'flags.preprimary_infostatus': True,
             'user_access_level': ['public']
         })
@@ -117,10 +116,10 @@ def hello_world(request):
         "verification_status": lpvstatus,
         "name": name,
         "preprimary_infostatus": flagsData['preprimary_infostatus'],
-        'secondary_infostatus': flagsData['secondary_infostatus'],
-        'primary_infostatus': flagsData['primary_infostatus'],
-        'tertiary_infostatus': flagsData['tertiary_infostatus'],
         "doc_id": ldoc_id
+        # 'secondary_infostatus': flagsData['secondary_infostatus'],
+        # 'primary_infostatus': flagsData['primary_infostatus'],
+        # 'tertiary_infostatus': flagsData['tertiary_infostatus'],
     }
 
     data = {

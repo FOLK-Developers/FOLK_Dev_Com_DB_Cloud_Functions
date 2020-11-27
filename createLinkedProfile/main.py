@@ -26,6 +26,8 @@ recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
 verification_status = "Pending"
 verified_by = "None"
 verified_timestamp = 0
+
+
 def hello_world(request):
     recData = flask.request.json
     # print("Received Data :", recdata)
@@ -43,21 +45,20 @@ def hello_world(request):
         verified_by = "domain"
         verified_timestamp = int(time.time())
 
-    created_timestamp = int(time.time())
+    creation_timestamp = int(time.time())
 
     data = {
-        'doc_id': "ae4sChLW7MmmdbH56vOi",
-           'url': "email@gmail.com",
-           'domain': "google",
-           'type': "communication",
-           'user_name': "email",
-           'update_timestamp': created_timestamp,
-            'verification_status': verification_status,
-            'verified_by': verified_by,
+        'doc_id': doc_id,
+        'url': url,
+        'domain': domain,
+        'type': type,
+        'user_name': user_name,
+        'update_timestamp': creation_timestamp,
+        'verification_status': verification_status,
+        'verified_by': verified_by,
         'verified_timestamp': verified_timestamp,
         'uid': uid
-            }
-
+    }
 
     # your logic or code here..
     docref = db.collection('Profile').document(doc_id).collection('LinkedProfiles').document()
@@ -80,12 +81,10 @@ def hello_world(request):
     docref = db.collection('Profile').document(doc_id).collection('Activities').document()
     docref.set(data)
 
-    # resp = requests.post('https://us-central1-folk-dev-com-db.cloudfunctions.net/addActivity',
-    #                      json=data)
 
     response = {
         "status": "True",
-        "message": "Created Linked Profiles & Activities.."
+        "message": "Created Linked Profiles & Activities"
     }
 
     return jsonify(response)
