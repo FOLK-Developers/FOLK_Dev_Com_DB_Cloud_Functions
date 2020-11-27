@@ -22,7 +22,7 @@ recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
            'performer': "Admin",
            'uid': 'xyz'}
 
-verification_status = "Pending"
+
 verified_by = "None"
 verified_timestamp = 0
 
@@ -36,9 +36,10 @@ def hello_world(request):
     domain = recData['domain']
     type = recData['type']
     user_name = recData['user_name']
-    signin_status = recData['signin_status']
+    signin_status = True if recData['signin_status']=="True" else False
     uid = recData['uid']
 
+    verification_status = "Pending"
     if signin_status == True:
         verification_status = "Verified"
         verified_by = "domain"
