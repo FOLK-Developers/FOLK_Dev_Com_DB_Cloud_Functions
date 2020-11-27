@@ -14,13 +14,13 @@ db = firestore.client()
 
 # global variables
 recData = {
-   "primary_source": "Social Media",
+    "primary_source": "Social Media",
     "secondary_source": "Facebook",
-   "url": "test@gmail.com",
-   "domain": "google",
-   "name": "Unknown",
-   "signin_status": True,
-   "performer": "Admin"
+    "url": "test@gmail.com",
+    "domain": "google",
+    "name": "Unknown",
+    "signin_status": True,
+    "performer": "Admin"
 }
 
 
@@ -91,8 +91,8 @@ def hello_world(request):
             'secondary_source': secondary_source,
             'primary_source': primary_source,
             'name': name,
-            'timestamps.preprimary_infostatus': int(time.time()),
-            'flags.preprimary_infostatus': True,
+            'timestamps': {'preprimary_infostatus': int(time.time())},
+            'flags': {'preprimary_infostatus': True},
             'user_access_level': ['public']
         })
         ldoc_id = docref.id

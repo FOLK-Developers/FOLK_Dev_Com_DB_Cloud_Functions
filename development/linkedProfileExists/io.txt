@@ -13,8 +13,7 @@
    "domain": "github",
    "name": "Chetan",
    "signin_status":"True",
-   "performer": "Admin",
-   "uid": "qwerty1234"
+   "performer": "Admin"
 }
 
 #outpu1
