@@ -19,9 +19,7 @@ recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
            'type': "communication",
            'user_name': "email",
            'signin_status': True,
-           'performer': "Admin",
-           'uid': 'xyz'}
-
+           'performer': "Admin"}
 
 verified_by = "None"
 verified_timestamp = 0
@@ -36,14 +34,13 @@ def hello_world(request):
     domain = recData['domain']
     type = recData['type']
     user_name = recData['user_name']
-    signin_status = True if recData['signin_status']=="True" else False
-    uid = recData['uid']
+    signin_status = True if recData['signin_status'] == "True" else False
 
     verification_status = "Pending"
-    if signin_status == True:
-        verification_status = "Verified"
-        verified_by = "domain"
-        verified_timestamp = int(time.time())
+    # if signin_status == True:
+    #     verification_status = "Verified"
+    #     verified_by = "domain"
+    #     verified_timestamp = int(time.time())
 
     creation_timestamp = int(time.time())
 
@@ -57,7 +54,7 @@ def hello_world(request):
         'verification_status': verification_status,
         'verified_by': verified_by,
         'verified_timestamp': verified_timestamp,
-        'uid': uid
+        'uid': "None"
     }
 
     # your logic or code here..
@@ -80,7 +77,6 @@ def hello_world(request):
 
     docref = db.collection('Profile').document(doc_id).collection('Activities').document()
     docref.set(data)
-
 
     response = {
         "status": "True",

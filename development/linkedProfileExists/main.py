@@ -20,8 +20,7 @@ recData = {
    "domain": "google",
    "name": "Unknown",
    "signin_status": True,
-   "performer": "Admin",
-   "uid": "xyz"
+   "performer": "Admin"
 }
 
 
@@ -67,7 +66,6 @@ def hello_world(request):
     name = recData['name']
     signin_status = recData['signin_status']
     performer = recData['performer']
-    uid = recData['uid']
 
     # your logic or code here..
 
@@ -109,8 +107,7 @@ def hello_world(request):
                 'type': type,
                 'user_name': name,
                 'signin_status': signin_status,
-                'performer': performer,
-                'uid': uid}
+                'performer': performer}
 
         lpvstatus = signin_status
         resp = requests.post('https://us-central1-folk-dev-com-db.cloudfunctions.net/createLinkedProfile',
