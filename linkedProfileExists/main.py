@@ -114,7 +114,7 @@ def hello_world(request):
     response = {
         "verification_status": lpvstatus,
         "name": name,
-        "preprimary_infostatus": flagsData['preprimary_infostatus'],
+        "flags.preprimary_infostatus": flagsData['preprimary_infostatus'],
         "doc_id": ldoc_id
         # 'secondary_infostatus': flagsData['secondary_infostatus'],
         # 'primary_infostatus': flagsData['primary_infostatus'],

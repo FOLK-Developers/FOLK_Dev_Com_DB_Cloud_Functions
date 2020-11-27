@@ -7,14 +7,14 @@
 #2. Response body : Json Body or json request
 
 {
-   "primary_source": "Social Media",
-    "secondary_source": "Facebook",
-   "url": "test@gmail.com",
+   "primary_source": "Coding Platform",
+    "secondary_source": "GitHub",
+   "url": "aditya@gmail.com",
    "domain": "google",
-   "name": "Unknown",
+   "name": "Aditya",
    "signin_status":"True",
    "performer": "Admin",
-   "uid": "xyz"
+   "uid": "qwerty123"
 }
 
 #outpu1
