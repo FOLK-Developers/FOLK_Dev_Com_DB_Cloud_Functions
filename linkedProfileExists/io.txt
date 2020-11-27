@@ -7,12 +7,12 @@
 #2. Response body : Json Body or json request
 
 {
-   "source": "Social Media",
-   "url": "email@gmail.com",
+   "primary_source": "Social Media",
+    "secondary_source": "Facebook",
+   "url": "test@gmail.com",
    "domain": "google",
-   "secondary_source": "Facebook",
    "name": "Unknown",
-   "signin_status": true,
+   "signin_status":"True",
    "performer": "Admin",
    "uid": "xyz"
 }
