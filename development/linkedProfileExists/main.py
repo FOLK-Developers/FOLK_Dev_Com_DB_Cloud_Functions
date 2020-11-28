@@ -69,7 +69,6 @@ def hello_world(request):
     secondary_source = recData['secondary_source']
     primary_source = recData['primary_source']
     name = recData['name']
-    signin_status = recData['signin_status']
     performer = recData['performer']
     purpose = recData['purpose']
 
