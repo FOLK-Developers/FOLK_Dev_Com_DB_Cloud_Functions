@@ -18,7 +18,6 @@ recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
            'domain': "google",
            'type': "communication",
            'user_name': "email",
-           'signin_status': True,
            'performer': "Admin"}
 
 verified_by = "None"
@@ -34,7 +33,7 @@ def hello_world(request):
     domain = recData['domain']
     type = recData['type']
     user_name = recData['user_name']
-    signin_status = True if recData['signin_status'] == "True" else False
+    #signin_status = True if recData['signin_status'] == "True" else False
 
     verification_status = "Pending"
     # if signin_status == True:
