@@ -28,31 +28,26 @@ recData = {
 def getProfileFlags(doc_id):
     docref = db.collection('Profile').document(doc_id)
     data = docref.get().to_dict()
-    print("getProfileFlags():", data)
     preprimary_infostatus = False
     primary_infostatus = False
     secondary_infostatus = False
     tertiary_infostatus = False
     name = 'Unknown Friend'
     response = {}
-    profile_keys = data.keys()
-    if 'flags' in profile_keys:
-        if 'preprimary_infostatus' in data['flags'].keys():
+    if 'flags' in data.keys():
+        if 'preprimary_infostatus' in data.keys()['flags']:
             preprimary_infostatus = data['flags']['preprimary_infostatus']
-            print("preprimary_infostatus:", preprimary_infostatus)
+            print(preprimary_infostatus)
             response['preprimary_infostatus'] = preprimary_infostatus
-        if 'primary_infostatus' in data['flags'].keys():
+        if 'primary_infostatus' in data.keys()['flags']:
             primary_infostatus = data['flags']['primary_infostatus']
             response['primary_infostatus'] = primary_infostatus
-            print("primary_infostatus:", primary_infostatus)
-        if 'secondary_infostatus' in data['flags'].keys():
+        if 'secondary_infostatus' in data.keys()['flags']:
             secondary_infostatus = data['flags']['secondary_infostatus']
             response['secondary_infostatus'] = secondary_infostatus
-            print("secondary_infostatus:", secondary_infostatus)
-        if 'tertiary_infostatus' in data['flags'].keys():
+        if 'tertiary_infostatus' in data.keys()['flags']:
             tertiary_infostatus = data['flags']['tertiary_infostatus']
             response['tertiary_infostatus'] = tertiary_infostatus
-            print("tertiary_infostatus:", tertiary_infostatus)
     if 'name' in data.keys():
         name = data['name']
 
