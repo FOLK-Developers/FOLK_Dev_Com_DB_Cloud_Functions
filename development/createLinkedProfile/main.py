@@ -33,7 +33,6 @@ def hello_world(request):
     domain = recData['domain']
     type = recData['type']
     user_name = recData['user_name']
-    # signin_status = True if recData['signin_status'] == "True" else False
 
     verification_status = "Pending"
     # if signin_status == True:

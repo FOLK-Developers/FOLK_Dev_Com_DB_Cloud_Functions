@@ -69,8 +69,8 @@ def hello_world(request):
     secondary_source = recData['secondary_source']
     primary_source = recData['primary_source']
     name = recData['name']
-    signin_status = recData['signin_status']
     performer = recData['performer']
+    purpose = recData['purpose']
 
     # your logic or code here..
 
@@ -91,6 +91,7 @@ def hello_world(request):
         if vstatus == "Verified":
             lpvstatus = True
     else:
+        #create a profile if not there
         docref = db.collection('Profile').document()
         docref.set({
             'secondary_source': secondary_source,
@@ -98,7 +99,8 @@ def hello_world(request):
             'name': name,
             'timestamps': {'preprimary_infostatus': int(time.time())},
             'flags': {'preprimary_infostatus': True},
-            'user_access_level': ['public']
+            'user_access_level': ['public'],
+            'purpose': purpose
         })
         ldoc_id = docref.id
         if domain == 'mobile' or domain == 'email':
@@ -111,10 +113,9 @@ def hello_world(request):
                 'domain': domain,
                 'type': type,
                 'user_name': name,
-                'signin_status': signin_status,
                 'performer': performer}
 
-        lpvstatus = signin_status
+        # lpvstatus = signin_status
         resp = requests.post('https://us-central1-folk-dev-com-db.cloudfunctions.net/createLinkedProfile',
                              json=data)
 
