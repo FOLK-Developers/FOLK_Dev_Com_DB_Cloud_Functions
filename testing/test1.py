@@ -28,31 +28,26 @@ recData = {
 def getProfileFlags(doc_id):
     docref = db.collection('Profile').document(doc_id)
     data = docref.get().to_dict()
-    print("getProfileFlags():", data)
     preprimary_infostatus = False
     primary_infostatus = False
     secondary_infostatus = False
     tertiary_infostatus = False
     name = 'Unknown Friend'
     response = {}
-    profile_keys = data.keys()
-    if 'flags' in profile_keys:
-        if 'preprimary_infostatus' in data['flags'].keys():
+    if 'flags' in data.keys():
+        if 'preprimary_infostatus' in data.keys()['flags']:
             preprimary_infostatus = data['flags']['preprimary_infostatus']
-            print("preprimary_infostatus:", preprimary_infostatus)
+            print(preprimary_infostatus)
             response['preprimary_infostatus'] = preprimary_infostatus
-        if 'primary_infostatus' in data['flags'].keys():
+        if 'primary_infostatus' in data.keys()['flags']:
             primary_infostatus = data['flags']['primary_infostatus']
             response['primary_infostatus'] = primary_infostatus
-            print("primary_infostatus:", primary_infostatus)
-        if 'secondary_infostatus' in data['flags'].keys():
+        if 'secondary_infostatus' in data.keys()['flags']:
             secondary_infostatus = data['flags']['secondary_infostatus']
             response['secondary_infostatus'] = secondary_infostatus
-            print("secondary_infostatus:", secondary_infostatus)
-        if 'tertiary_infostatus' in data['flags'].keys():
+        if 'tertiary_infostatus' in data.keys()['flags']:
             tertiary_infostatus = data['flags']['tertiary_infostatus']
             response['tertiary_infostatus'] = tertiary_infostatus
-            print("tertiary_infostatus:", tertiary_infostatus)
     if 'name' in data.keys():
         name = data['name']
 
@@ -69,8 +64,8 @@ def hello_world(request):
     secondary_source = recData['secondary_source']
     primary_source = recData['primary_source']
     name = recData['name']
+    signin_status = recData['signin_status']
     performer = recData['performer']
-    purpose = recData['purpose']
 
     # your logic or code here..
 
@@ -91,7 +86,6 @@ def hello_world(request):
         if vstatus == "Verified":
             lpvstatus = True
     else:
-        #create a profile if not there
         docref = db.collection('Profile').document()
         docref.set({
             'secondary_source': secondary_source,
@@ -99,8 +93,7 @@ def hello_world(request):
             'name': name,
             'timestamps': {'preprimary_infostatus': int(time.time())},
             'flags': {'preprimary_infostatus': True},
-            'user_access_level': ['public'],
-            'purpose': purpose
+            'user_access_level': ['public']
         })
         ldoc_id = docref.id
         if domain == 'mobile' or domain == 'email':
@@ -113,9 +106,10 @@ def hello_world(request):
                 'domain': domain,
                 'type': type,
                 'user_name': name,
+                'signin_status': signin_status,
                 'performer': performer}
 
-        # lpvstatus = signin_status
+        lpvstatus = signin_status
         resp = requests.post('https://us-central1-folk-dev-com-db.cloudfunctions.net/createLinkedProfile',
                              json=data)
 

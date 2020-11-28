@@ -18,7 +18,6 @@ recData = {'doc_id': "ae4sChLW7MmmdbH56vOi",
            'domain': "google",
            'type': "communication",
            'user_name': "email",
-           'signin_status': True,
            'performer': "Admin"}
 
 verified_by = "None"
@@ -34,7 +33,6 @@ def hello_world(request):
     domain = recData['domain']
     type = recData['type']
     user_name = recData['user_name']
-    signin_status = True if recData['signin_status'] == "True" else False
 
     verification_status = "Pending"
     # if signin_status == True:
@@ -56,6 +54,17 @@ def hello_world(request):
         'verified_timestamp': verified_timestamp,
         'uid': "None"
     }
+
+    docref = db.collection_group(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
+    docs = docref.stream()
+
+    for doc in docs:
+        response = {
+            "status": "False",
+            "message": "Linked Profile exists already"
+        }
+
+        return jsonify(response)
 
     # your logic or code here..
     docref = db.collection('Profile').document(doc_id).collection('LinkedProfiles').document()

@@ -12,8 +12,8 @@
    "url": "chetan@github.com",
    "domain": "github",
    "name": "Chetan",
-   "signin_status":"True",
-   "performer": "Admin"
+   "performer": "Admin",
+   "purpose" : "internship"
 }
 
 #outpu1
