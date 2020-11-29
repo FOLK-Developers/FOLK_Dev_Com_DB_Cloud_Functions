@@ -1,34 +1,22 @@
-
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials
+from firebase_admin import firestore
 import flask
-from flask import jsonify
+from flask import request, jsonify
 
-cred = credentials.Certificate('folk-dev-com-db-firebase-adminsdk-mz02x-6bcb0d65ae.json')
+# initialize firebase application
+firebase_admin.initialize_app()
 
-firebase_admin.initialize_app(cred,
-                              {
-                                  'databaseURL': 'https://folk-database.firebaseio.com/'
-                              })
+# connect to db
+db = firestore.client()
 
-
-
-db =firestore.client()
-
-recdata={
-    "evaluation": "val",
-    "doc_id": "val",
-    "evaluated_by": "val",
-    "name_of_skill": "val"
-}
-
-
+#global variables
 
 def hello_world(request):
     recdata = flask.request.json
 
     evaluation = recdata['evaluation']
-    doc_id=recdata['doc_id']
+    doc_id = recdata['doc_id']
     evaluated_by = recdata['evaluated_by']
     name_of_skill = recdata['name_of_skill']
 
