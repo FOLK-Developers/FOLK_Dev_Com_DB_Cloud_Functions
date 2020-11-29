@@ -19,6 +19,7 @@ def hello_world(request):
     doc_id = recdata['doc_id']
     evaluated_by = recdata['evaluated_by']
     name_of_skill = recdata['name_of_skill']
+    name_of_skill = name_of_skill.lower()
 
     docref = db.collection_group('Skills').where('name_of_skill', '==', name_of_skill)
     docs = docref.stream()
