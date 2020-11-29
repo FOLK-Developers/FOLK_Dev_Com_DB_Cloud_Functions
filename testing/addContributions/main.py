@@ -13,8 +13,8 @@ db = firestore.client()
 
 #global variables
 
-data={
-    "custom_fields": "val",
+recdata={
+    # "custom_fields": {'response':'val', 'title':'val'},
     "channel": "val",
     "timestamp": "val",
     "doc_id": "val",
@@ -26,13 +26,19 @@ data={
 }
 
 def hello_world(request):
-    recdata = flask.request.json
+    # recdata = flask.request.json
     print("Received Data :", recdata)
 
     #your logic or code here..
 
-    uid = recdata['uid']  # make sure
-    custom_fields = recdata['custom_fields']
+    # uid = recdata['uid']  # make sure
+
+    # response = recdata['response']
+    # title = recdata['title']
+    # custom_fields =
+
+    uid = 'None'
+
     channel= recdata['channel']
     contribution_level=recdata['contribution_level']
     action_taken = recdata['action_taken']
@@ -40,35 +46,34 @@ def hello_world(request):
     contribution_type = recdata['contribution_type']
     contribution_details = recdata['contribution_details']
 
-    docs = db.collection('Profile').where('uid', '==', uid).limit(1).stream()
+    doc_id = recdata['doc_id']
 
-    doc_id = ''
-
-    for doc in docs:
-        doc_id = doc.id
+    # docs = db.collection('Profile').where('uid', '==', uid).limit(1).stream()
 
     ref = db.collection("Profile").document(doc_id).collection("Contributions").document()
 
-    id = ref.id # make sure
+    # id = ref.id # make sure
+
     timestamp = int(time.time())
 
     data={
-        "custom_fields": custom_fields,
+        # "custom_fields": custom_fields,
         "channel": channel,
         "timestamp": timestamp,
-        "doc_id": id,
+        "doc_id": doc_id,
         "contribution_level":contribution_level,
         "action_taken": action_taken,
         "status": status,
         "contribution_type":contribution_type,
-        "contribution_details": contribution_details
+        "contribution_details": contribution_details,
+        'uid': "None"
 }
 
     ref.set(data)
 
     response = {
         "status": "True",
-        "message": " "
+        "message": "Created Contributions"
     }
 
     return jsonify(response)
