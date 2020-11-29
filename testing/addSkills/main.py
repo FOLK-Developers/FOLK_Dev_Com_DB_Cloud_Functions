@@ -32,7 +32,7 @@ def hello_world(request):
     evaluated_by = recdata['evaluated_by']
     name_of_skill = recdata['name_of_skill']
 
-    docref = db.collection_group('Skills').where(u'name_of_skill', u' == ', name_of_skill)
+    docref = db.collection_group('Skills').where('name_of_skill', '==', name_of_skill)
     docs = docref.stream()
 
     for doc in docs:
@@ -52,6 +52,14 @@ def hello_world(request):
     }
 
     ref.set(data)
+
+    ref = db.collection("Profile").document(doc_id)
+
+    data = {
+        "skills": firestore.ArrayUnion([name_of_skill])
+    }
+
+    ref.update(data)
 
     response = {
         "status": "True",

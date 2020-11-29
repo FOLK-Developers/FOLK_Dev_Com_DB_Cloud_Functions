@@ -7,8 +7,10 @@
 #2. Response body : Json Body or json request
 
 {
-"name" : "chetan",
-"email" : "chetanfolk@gmail.com"
+        "evaluation": "3",
+        "doc_id": "w5pjetNFV7sG524EIqKS",
+        "evaluated_by": "Admin",
+        "name_of_skill": "Python"
 }
 
 

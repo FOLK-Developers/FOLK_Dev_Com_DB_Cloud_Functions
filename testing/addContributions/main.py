@@ -11,65 +11,33 @@ firebase_admin.initialize_app()
 # connect to db
 db = firestore.client()
 
-#global variables
+# global variables
 
-recdata={
-    # "custom_fields": {'response':'val', 'title':'val'},
-    "channel": "val",
-    "timestamp": "val",
-    "doc_id": "val",
-    "contribution_level": "val",
-    "action_taken": "val",
-    "status": "val",
-    "contribution_type": "val",
-    "contribution_details": "val"
-}
 
 def hello_world(request):
-    # recdata = flask.request.json
-    print("Received Data :", recdata)
+    recdata = flask.request.json
+    # print("Received Data :", recdata)
 
-    #your logic or code here..
+    q1 = recdata['q1']
+    q1_response = recdata['q1_response']
 
-    # uid = recdata['uid']  # make sure
+    # q1 = "Why should you be hired for this role?"
+    # q2 = "Are you available for 2 months, starting immediately, for a work from home internship?"
 
-    # response = recdata['response']
-    # title = recdata['title']
-    # custom_fields =
+    docref = db.collection('test').document()
+    cdoc = docref.collection('Contribution').document()
 
-    uid = 'None'
+    data = {"custom_fields": firestore.ArrayUnion([{"title": q1, "response": q1_response}]),
+            "channel": "Backend",
+            "timestamp": int(time.time()),
+            "doc_id": docref.id,
+            "contribution_level": "Intern",
+            "action_taken": "Joined",
+            "status": "Active",
+            "contribution_type": "Full-time",
+            "contribution_details": "get exp"}
 
-    channel= recdata['channel']
-    contribution_level=recdata['contribution_level']
-    action_taken = recdata['action_taken']
-    status = recdata['status']
-    contribution_type = recdata['contribution_type']
-    contribution_details = recdata['contribution_details']
-
-    doc_id = recdata['doc_id']
-
-    # docs = db.collection('Profile').where('uid', '==', uid).limit(1).stream()
-
-    ref = db.collection("Profile").document(doc_id).collection("Contributions").document()
-
-    # id = ref.id # make sure
-
-    timestamp = int(time.time())
-
-    data={
-        # "custom_fields": custom_fields,
-        "channel": channel,
-        "timestamp": timestamp,
-        "doc_id": doc_id,
-        "contribution_level":contribution_level,
-        "action_taken": action_taken,
-        "status": status,
-        "contribution_type":contribution_type,
-        "contribution_details": contribution_details,
-        'uid': "None"
-}
-
-    ref.set(data)
+    cdoc.set(data)
 
     response = {
         "status": "True",
