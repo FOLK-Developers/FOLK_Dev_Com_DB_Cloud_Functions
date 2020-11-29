@@ -41,6 +41,14 @@ def hello_world(request):
 
     ref.set(data)
 
+    ref = db.collection("Profile").document(doc_id)
+
+    data = {
+        "skills": firestore.ArrayUnion([name_of_skill])
+    }
+
+    ref.update(data)
+
     response = {
         "status": "True",
         "message": "Skill added successfully!"
