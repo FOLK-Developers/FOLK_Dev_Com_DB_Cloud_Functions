@@ -1,6 +1,7 @@
 
 import firebase_admin
 from firebase_admin import credentials, firestore
+import  flask
 from flask import jsonify
 
 cred = credentials.Certificate('folk-dev-com-db-firebase-adminsdk-mz02x-6bcb0d65ae.json')
@@ -26,8 +27,7 @@ recdata={
 
 
 def hello_world(request):
-    # recdata = flask.request.json
-    print("Received Data :", recdata)
+    recdata = flask.request.json
 
 
     location = recdata['location']

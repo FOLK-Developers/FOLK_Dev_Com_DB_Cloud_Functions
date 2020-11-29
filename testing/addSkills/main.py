@@ -1,6 +1,7 @@
 
 import firebase_admin
 from firebase_admin import credentials, firestore
+import flask
 from flask import jsonify
 
 cred = credentials.Certificate('folk-dev-com-db-firebase-adminsdk-mz02x-6bcb0d65ae.json')
@@ -9,6 +10,8 @@ firebase_admin.initialize_app(cred,
                               {
                                   'databaseURL': 'https://folk-database.firebaseio.com/'
                               })
+
+
 
 db =firestore.client()
 
@@ -22,9 +25,7 @@ recdata={
 
 
 def hello_world(request):
-    # recdata = flask.request.json
-    print("Received Data :", recdata)
-
+    recdata = flask.request.json
 
     evaluation = recdata['evaluation']
     doc_id=recdata['doc_id']
