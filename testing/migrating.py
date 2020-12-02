@@ -7,25 +7,17 @@ cred = credentials.Certificate('folk-dev-com-db-firebase-adminsdk-mz02x-999a6d8c
 
 firebase_admin.initialize_app(cred,
                               {
-                                  'databaseURL': 'https://folk-database.firebaseio.com/'
+                                  'databaseURL': "https://folk-dev-com-db.firebaseio.com"
                               })
 
 db = firestore.client()
 
 # getProfile doc ids
-pdocref = db.collection('Profile').limit(1).stream()
-
-pcount = 0
+lpdocref = db.collection_group('LinkedProfiles').limit(2).stream()
 lpcount = 0
-
-for doc in pdocref:
-    # docid = doc.id
-    lpdocref = db.collection('Profile').document(doc.id).collection('LinkedProfiles').stream()
-    pcount += 1
-    for lpdoc in lpdocref:
-        lpmdocref = db.collection('LinkedProfiles').document()
-        lpmdocref.set(lpdoc.to_dict())
-        lpcount += 1
-
-print("Total Profiles Updated: " + pcount)
-print("Total Linked Profiles Updated: " + lpcount)
+for doc in lpdocref:
+    print(doc.id)
+    lpmdocref = db.collection('LinkedProfiles').document()
+    data = doc.to_dict()
+    lpmdocref.set(data)
+    db.collection('Profile').document(data['doc_id']).collection('LinkedProfiles').document(doc.id).delete()
