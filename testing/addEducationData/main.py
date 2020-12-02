@@ -1,17 +1,15 @@
 
 import firebase_admin
-from firebase_admin import credentials, firestore
-import  flask
-from flask import jsonify
+from firebase_admin import credentials
+from firebase_admin import firestore
+import flask
+from flask import request, jsonify
 
-cred = credentials.Certificate('folk-dev-com-db-firebase-adminsdk-mz02x-6bcb0d65ae.json')
+# initialize firebase application
+firebase_admin.initialize_app()
 
-firebase_admin.initialize_app(cred,
-                              {
-                                  'databaseURL': 'https://folk-database.firebaseio.com/'
-                              })
-
-db =firestore.client()
+# connect to db
+db = firestore.client()
 
 recdata={
     "location": "val",
@@ -39,7 +37,16 @@ def hello_world(request):
     year_of_completion = recdata['year_of_completion']
     highest_degree = recdata['highest_degree']
 
-    ref = db.collection("Profile").document(doc_id).collection("Educational_Details").document()
+    docs = db.collection("Profile").document(doc_id).collection("EducationDetails").where('highest_degree', '==', highest_degree).stream()
+
+    for doc in docs:
+        response = {
+            "status": "False",
+            "message": "EducationDetails exists already!"
+        }
+        return jsonify(response)
+
+    ref = db.collection("Profile").document(doc_id).collection("EducationDetails").document()
 
     data = {
     "location": location,
@@ -50,7 +57,7 @@ def hello_world(request):
     "score": score,
     "year_of_completion":year_of_completion,
     "highest_degree": highest_degree
-}
+    }
 
     ref.set(data)
 
