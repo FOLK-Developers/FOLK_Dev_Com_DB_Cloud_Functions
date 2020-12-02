@@ -26,10 +26,9 @@ db = firestore.client()
 
 # global variables
 recdata = {
-        "q1": "Why should you be hired for this role?",
-        "q1_response": "hsdhas",
-        "q2": "Are you available for 2 months, starting immediately, for a work from home internship?",
-        "q2_response": "sdkuasdl",
+
+        "custom_fields":[{"title": "Why should you be hired for this role?", "response": 'sahdashj'},
+                    {"title": "Are you available for 2 months, starting immediately, for a work from home internship?", "response": "sdkuasdl"}],
         "channel": "Backend",
         "doc_id": "sjdksadkka",
         "contribution_level": "Intern",
