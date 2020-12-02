@@ -27,9 +27,9 @@ db = firestore.client()
 # global variables
 recdata = {
 
-        "custom_fields":[{"title": "Why should you be hired for this role?", "response": 'sahdashj'},
-                    {"title": "Are you available for 2 months, starting immediately, for a work from home internship?", "response": "sdkuasdl"}],
-        "channel": "Backend",
+        "custom_fields":[{"q1": "Why should you be hired for this role?", "q1_response": 'sahdashj'},
+                    {"q2": "Are you available for 2 months, starting immediately, for a work from home internship?", "q2_response": "sdkuasdl"}],
+        "channel": "Frontend",
         "doc_id": "sjdksadkka",
         "contribution_level": "Intern",
         "action_taken": "Joined",
@@ -45,10 +45,13 @@ def hello_world(request):
     # q1 = "Why should you be hired for this role?"
     # q2 = "Are you available for 2 months, starting immediately, for a work from home internship?"
 
-    q1 = recdata['q1']
-    q1_response = recdata['q1_response']
-    q2 = recdata['q2']
-    q2_response = recdata['q2_response']
+    # q1 = recdata['custom_fields'].['q1']
+    # q1_response = recdata['custom_fields']['q1_response']
+    # q2 = recdata['custom_fields']['q2']
+    # q2_response = recdata['custom_fields']['q2_response']
+
+
+    custom_fields = recdata['custom_fields']
 
     channel = recdata['channel']
     contribution_level = recdata['contribution_level']
@@ -62,7 +65,7 @@ def hello_world(request):
     cdoc = docref.collection('Contribution').document()
 
 
-    data = {"custom_fields": firestore.ArrayUnion([{"title": q1, "response": q1_response}, {"title": q2, "response": q2_response}]),
+    data = {"custom_fields": firestore.ArrayUnion(custom_fields),
             "channel": channel,
             "timestamp": int(time.time()),
             "doc_id": docref.id,
@@ -78,4 +81,7 @@ def hello_world(request):
         "status": "True",
         "message": "Created Contributions"
     }
-    return jsonify(response)
+    # return jsonify(response)
+
+
+# hello_world(recdata)
