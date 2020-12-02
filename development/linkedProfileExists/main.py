@@ -74,7 +74,8 @@ def hello_world(request):
 
     # your logic or code here..
 
-    docref = db.collection_group(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
+    # docref = db.collection_group(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
+    docref = db.collection(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
     docs = docref.stream()
 
     ldoc_id = ""

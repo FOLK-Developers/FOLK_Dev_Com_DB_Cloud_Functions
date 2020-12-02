@@ -55,7 +55,8 @@ def hello_world(request):
         'uid': "None"
     }
 
-    docref = db.collection_group(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
+    # docref = db.collection_group(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
+    docref = db.collection(u'LinkedProfiles').where(u'domain', u'==', domain).where('url', '==', url)
     docs = docref.stream()
 
     for doc in docs:
@@ -67,7 +68,8 @@ def hello_world(request):
         return jsonify(response)
 
     # your logic or code here..
-    docref = db.collection('Profile').document(doc_id).collection('LinkedProfiles').document()
+    # docref = db.collection('Profile').document(doc_id).collection('LinkedProfiles').document()
+    docref = db.collection('LinkedProfiles').document()
     docref.set(data)
 
     data = {
