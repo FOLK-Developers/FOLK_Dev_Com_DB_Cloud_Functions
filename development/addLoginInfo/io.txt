@@ -1,0 +1,29 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+ "doc_id": "val",
+ "last_login": "val",
+ "first_login": "val",
+ "application": "val",
+ "avatar": "val",
+ "login_type": "val",
+ "account_status": "val",
+ "username": "val"
+}
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "LoginInfo added successfully!"
+}
+
+
+#more io tests here

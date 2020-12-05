@@ -1,0 +1,29 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+ "end_date": "val",
+ "company_name": "val",
+ "doc_id": "val",
+ "company_location": "val",
+ "start_date": "val",
+ "status": "val",
+ "designation": "val"
+}
+
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "ProfessionalDetails added successfully!"
+}
+
+
+#more io tests here

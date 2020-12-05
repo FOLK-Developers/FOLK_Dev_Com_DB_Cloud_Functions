@@ -1,0 +1,32 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+ "completion_percent": "val",
+ "date_of_completion": "val",
+ "date_of_creation": "val",
+ "date_of_due": "val",
+ "description": "val",
+ "doc_id": "val",
+ "image": "val",
+ "reward": "val",
+ "status": "val",
+ "title": "val"
+}
+
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "Tasks added successfully!"
+}
+
+
+#more io tests here

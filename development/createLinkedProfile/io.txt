@@ -7,14 +7,13 @@
 #2. Response body : Json Body or json request
 
 {
-   "doc_id":"U7BSrmzBS6WsP7LULzHh",
-   "url":"chetan@github.com",
-   "domain":"github",
-   "type":"social",
-   "user_name":"Chetan",
+   "doc_id":"06P4I4qRYrBMKwlZX8ZV",
+   "url":"terveraosu@gmail.com",
+   "domain":"email",
+   "type":"Communication",
+   "user_name":"Terver Aosu",
    "performer":"Admin"
 }
-
 
 
 #outpu1

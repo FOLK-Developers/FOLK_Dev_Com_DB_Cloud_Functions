@@ -1,0 +1,32 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+ "title": "val",
+ "doc_id": "val",
+ "notification_type": "val",
+ "user_visibility": "val",
+ "action_taken": "val",
+ "message": "val",
+ "application": "val",
+ "image": "val",
+ "edate": "val",
+ "link": "val"
+}
+
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "Notifications added successfully!"
+}
+
+
+#more io tests here

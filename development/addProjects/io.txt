@@ -1,0 +1,35 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+ "hours": "val",
+ "rewards": "val",
+ "major_contribution": "val",
+ "join_date": "val",
+ "status": "val",
+ "exit_date": "val",
+ "remarks": "val",
+ "hr_manager": "val",
+ "role": "val",
+ "reporting_manager": "val",
+ "doc_id": "val",
+ "project_id": "val",
+ "accesses": "val"
+}
+
+
+
+#outpu1
+
+{
+        "status": "True",
+        "message": "Projects added successfully!"
+}
+
+
+#more io tests here

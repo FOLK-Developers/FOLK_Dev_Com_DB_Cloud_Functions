@@ -1,0 +1,35 @@
+#input1
+
+#input types:
+
+#1. URL args : https://someurl.com?arg1=val1&arg2=val2
+
+#2. Response body : Json Body or json request
+
+{
+ "meeting_venue": "val",
+ "meeting_end_time": "val",
+ "meeting_start_time": "val",
+ "meeting_type": "val",
+ "doc_id": "val",
+ "attended_status": "val",
+ "edate": "val",
+ "confirmation_status": "val",
+ "invite_status": "val",
+ "meeting_location": "val",
+ "meeting_category": "val",
+ "meeting_id": "val",
+ "hosted_by": "val"
+}
+
+
+
+#outpu1
+
+{
+    "status": "True",
+    "message": "Meeting added successfully!"
+}
+
+
+#more io tests here

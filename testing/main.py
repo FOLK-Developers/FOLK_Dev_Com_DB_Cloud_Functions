@@ -1,9 +1,8 @@
-
 # documentTestDup
 
 # This code is for addDocuments. It checks for any duplicates.
 # Eg : if resume already exists then it will change only the doc_link and keep previous info
-    # Otherwise it will create a new document
+# Otherwise it will create a new document
 
 import firebase_admin
 from firebase_admin import credentials
@@ -18,10 +17,10 @@ from flask import request, jsonify
 #                                   'databaseURL': 'https://folk-database.firebaseio.com/'
 #                               })
 
-db =firestore.client()
+db = firestore.client()
 
-#global variables
-recdata={
+# global variables
+recdata = {
     "reference_file_name": "reference_file_name2",
     "file_type": "file_type1",
     "doc_link": "doc_link4",
@@ -41,13 +40,11 @@ def hello_world(request):
     uploaded_by = recdata['uploaded_by']
     edate = recdata['edate']
     doc_type = recdata['doc_type']
-    doc_id  = recdata['doc_id']
+    doc_id = recdata['doc_id']
 
-
-    #Checking if the document alreday exists
-    docs = db.collection('test').document(doc_id).collection('Documents').where('doc_link', '==',doc_link).where('reference_file_name','==',reference_file_name)
+    # Checking if the document alreday exists
+    docs = db.collection('test').document(doc_id).collection('Documents').where('doc_link', '==', doc_link).where('reference_file_name', '==', reference_file_name)
     docref = docs.stream()
-
 
     # if it exists then we update only the doc_link and keep the rest same
     for doc in docref:
@@ -61,22 +58,22 @@ def hello_world(request):
             "doc_id": doc.to_dict()['doc_id']
         }
 
-        alreadyExistingDoc =db.collection('test').document(doc_id).collection('Documents').document(doc.id)
+        alreadyExistingDoc = db.collection('test').document(doc_id).collection('Documents').document(doc.id)
         alreadyExistingDoc.set(
             data,
             merge=True
         )
 
         return jsonify(
-        {
-                     "status": "True",
-                      "message": "Document exists already! Updated! "
-        })
+            {
+                "status": "True",
+                "message": "Document exists already! Updated! "
+            })
 
     # If it does'nt exist then we need to make a new documenet and add new data to it
     newDoc = db.collection('test').document(doc_id).collection('Documents').document()
     data = {
-        "reference_file_name":reference_file_name,
+        "reference_file_name": reference_file_name,
         "file_type": file_type,
         "doc_link": doc_link,
         "uploaded_by": uploaded_by,
