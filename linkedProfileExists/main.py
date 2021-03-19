@@ -108,7 +108,7 @@ def hello_world(request):
                 'uid': uid}
 
         lpvstatus = signin_status
-        resp = requests.post('https://us-central1-folk-dev-com-db.cloudfunctions.net/createLinkedProfile',
+        resp = requests.post('https://us-central1-folk-database.cloudfunctions.net/createLinkedProfile',
                              json=data)
 
     flagsData = getProfileFlags(ldoc_id)
