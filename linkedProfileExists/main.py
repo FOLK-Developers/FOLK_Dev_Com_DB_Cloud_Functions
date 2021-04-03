@@ -32,6 +32,7 @@ def getProfileFlags(url,domain):
         ProfileCol = db.collection('Profile').where("email",'==',url)
     
     preprimary_infostatus1=False
+    ProfileDocExistsStatus1=False
     for pDoc in ProfileCol.stream():
         ldoc_id=pDoc.id
         ProfileDocExistsStatus1=True
