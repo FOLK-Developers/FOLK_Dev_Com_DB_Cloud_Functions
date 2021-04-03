@@ -20,6 +20,7 @@ db = firestore.client()
 
 def getProfileFlags(url,domain):
     ProfileCol=None
+    url_p=None
     if domain=="phone":
         url = url.strip()
         if url.startswith("+91") or url.startswith("91"):
@@ -112,7 +113,7 @@ def hello_world(request):
 
 
         # If profile does not exist then create it
-        ProfileDocExistsStatus=recData["profile_exist"]
+        ProfileDocExistsStatus=json_data["profile_exist"]
         if ProfileDocExistsStatus ==False:
             dat={}
             if domain=='phone':
