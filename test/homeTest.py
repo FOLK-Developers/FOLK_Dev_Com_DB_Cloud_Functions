@@ -9,11 +9,4 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://folk-database.firebaseio.com/'
 }) 
 # # token = [] 
-db = firestore.client()       
-   
-
- 
- 
- 
- 
- 
+db = firestore.client()    
