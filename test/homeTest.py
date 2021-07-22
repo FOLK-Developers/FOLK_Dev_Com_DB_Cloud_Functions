@@ -5,10 +5,10 @@ from firebase_admin import firestore
  
 cred = credentials.Certificate('./.../folk-dev-com-db-firebase-adminsdk-mz02x-20922898af.json') 
  
-firebase_admin.initialize_app(cred, { 
+firebase_admin.initialize_app(cred, {  
     'databaseURL': 'https://folk-database.firebaseio.com/' 
 })   
-# # token = [] 
+# # token = []  
 db = firestore.client()     
     
  
